@@ -9,10 +9,10 @@ BaselineOfMagritteForGToolkit >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec
-			baseline: 'Grease' with: [
-				spec repository: 'github://feenkcom/Grease:v1.8.1/repository' ].
+			baseline: 'GreaseForGToolkit' with: [
+				spec repository: 'github://feenkcom/Grease:v1.8.2/repository' ].
 
 		spec package: 'Magritte-Model' with: [
-			spec requires: #('Grease') ].
+			spec requires: #('GreaseForGToolkit') ].
 	]
 ]
