@@ -1,5 +1,5 @@
 Class {
-	#name : #MADescriptionMethodSource,
+	#name : #MADescriptionContext,
 	#superclass : #MABasicObject,
 	#instVars : [
 		'modelClass',
@@ -9,7 +9,7 @@ Class {
 }
 
 { #category : #comparing }
-MADescriptionMethodSource >> = anObject [
+MADescriptionContext >> = anObject [
 	self == anObject
 		ifTrue: [ ^ true ].
 
@@ -21,44 +21,55 @@ MADescriptionMethodSource >> = anObject [
 ]
 
 { #category : #accessing }
-MADescriptionMethodSource >> compiledMethod [
+MADescriptionContext >> compiledMethod [
 	^ self methodClass
 		ifNotNil: [ :aClass | aClass >> self methodSelector asSymbol ]
 ]
 
+{ #category : #accessing }
+MADescriptionContext >> compiledMethodGtViewFor: aView [
+	 <gtView>
+		
+	^ aView forward
+		title: 'Method';
+		priority: 10;
+		object: [ self compiledMethod ];
+		view: #gtSourceFor:
+]
+
 { #category : #comparing }
-MADescriptionMethodSource >> hash [
+MADescriptionContext >> hash [
 	^ self methodSelector hash
 		bitXor: (self modelClass hash)
 ]
 
 { #category : #accessing }
-MADescriptionMethodSource >> methodClass [
+MADescriptionContext >> methodClass [
 	^ self modelClass whichClassIncludesSelector: self methodSelector
 ]
 
 { #category : #accessing }
-MADescriptionMethodSource >> methodSelector [
+MADescriptionContext >> methodSelector [
 	^ methodSelector
 ]
 
 { #category : #accessing }
-MADescriptionMethodSource >> methodSelector: anObject [
+MADescriptionContext >> methodSelector: anObject [
 	methodSelector := anObject
 ]
 
 { #category : #accessing }
-MADescriptionMethodSource >> modelClass [
+MADescriptionContext >> modelClass [
 	^ modelClass
 ]
 
 { #category : #accessing }
-MADescriptionMethodSource >> modelClass: anObject [
+MADescriptionContext >> modelClass: anObject [
 	modelClass := anObject
 ]
 
 { #category : #accessing }
-MADescriptionMethodSource >> printOn: aStream [
+MADescriptionContext >> printOn: aStream [
 	| aMethodClass |
 	super printOn: aStream.
 

@@ -46,7 +46,11 @@ MAActionDescription >> action [
 { #category : #accessing }
 MAActionDescription >> action: aValuable [
 
+	| anOldAction |
+	anOldAction := action.
 	action := aValuable.
+	
+	self propertyAnnounceKey: #action oldValue: anOldAction newValue: aValuable
 ]
 
 { #category : #accessing }
@@ -62,14 +66,15 @@ MAActionDescription >> comment: aString [
 ]
 
 { #category : #accessing }
-MAActionDescription >> definingSource [
-	<return: #MADescriptionMethodSource>
-	^ self propertyAt: #definingSource ifAbsent: [ nil ]
+MAActionDescription >> definingContext [
+	
+	^ self propertyAt: #definingContext ifAbsent: [ nil ]
 ]
 
 { #category : #accessing }
-MAActionDescription >> definingSource: aSource [
-	^ self propertyAt: #definingSource put: aSource
+MAActionDescription >> definingContext: anMADefiningContext [
+	
+	^ self propertyAt: #definingContext  put: anMADefiningContext
 ]
 
 { #category : #accessing }
