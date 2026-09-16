@@ -4,30 +4,17 @@ Class {
 	#category : #BaselineOfMagritteForGToolkit
 }
 
-{ #category : #baseline }
+{ #category : #baselines }
 BaselineOfMagritteForGToolkit >> baseline: spec [
 
 	<baseline>
-	spec for: #common do: [
+	spec for: #common do: [ 
 		spec
 			baseline: 'GreaseForGToolkit'
-			with: [
+			with: [ 
 				spec repository: 'github://feenkcom/Grease:feenk/repository' ].
 
-		#('Magritte-Model'
-			'Magritte-Model-Core'
-			'Magritte-Model-Visitor'
-			'Magritte-Model-Description'
-			'Magritte-Model-Accessor'
-			'Magritte-Model-Memento'
-			'Magritte-Model-Uncategorized'
-			'Magritte-Model-Builder'
-			'Magritte-Model-Exception'
-			'Magritte-Model-Manifest'
-			'Magritte-Model-Models'
-			'Magritte-Model-Utility')
-			do: [ :packageName |
-				spec
-					package: packageName
-					with: [ spec requires: #( 'GreaseForGToolkit' ) ] ] ]
+		spec
+			package: 'Magritte-Model'
+			with: [ spec requires: #( 'GreaseForGToolkit' ) ] ]
 ]
