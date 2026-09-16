@@ -20,6 +20,7 @@ BaselineOfMagritteForGToolkit >> baseline: spec [
 			'Magritte-Model-Description'
 			'Magritte-Model-Accessor'
 			'Magritte-Model-Memento'
+			'Magritte-Model-Uncategorized'
 			'Magritte-Model-Builder'
 			'Magritte-Model-Exception'
 			'Magritte-Model-Manifest'
