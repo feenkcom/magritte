@@ -2,6 +2,8 @@ Extension { #name : #Object }
 
 { #category : #'*magritte-model-accessing' }
 Object >> basicMagritteDescription [
+	<gsCode: nil>
+	
 	^ MAPragmaBuilder for: self
 ]
 
@@ -9,6 +11,8 @@ Object >> basicMagritteDescription [
 Object >> descriptionContainer [
 	"Return the default description container."
 	<magritteContainer>
+	<gsCode: nil>
+
 	^ MAPriorityContainer new
 		label: self class label;
 		yourself
@@ -119,6 +123,7 @@ Object >> magritteAlternatesFor: aDescriptionSelector [
 
 { #category : #'*magritte-model-builder' }
 Object >> magritteDescription [
+	<gsCode: nil>
 	|basicDescription builders|
 	basicDescription := self basicMagritteDescription.
 	builders := self magritteDescriptionBuilders.
@@ -128,16 +133,20 @@ Object >> magritteDescription [
 
 { #category : #'*Magritte-Model' }
 Object >> magritteDescriptionBuilders [
+	<gsCode: nil>
 	|builderPragmas container|
+	
 	builderPragmas := Pragma allNamed: #magritteBuilder from: self class to: Object.
 	builderPragmas ifEmpty: [ ^nil ].
-	container := QCDescriptionBuilderContainer new.
+
+	"container := QCDescriptionBuilderContainer new.
 	builderPragmas do: [ :pragma |
 		|bld |
 		pragma method numArgs = 0 ifTrue: [ 
 			bld := self perform: pragma method selector.
 			bld ifNotNil: [ container add: bld ] ] ].
-	^container
+	^container"
+	self error: 'QCDescriptionBuilderContainer not present'.
 ]
 
 { #category : #'*magritte-model-description' }
