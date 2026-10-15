@@ -2,6 +2,8 @@ Extension { #name : #Symbol }
 
 { #category : #'*magritte-model-converting' }
 Symbol >> asAccessor [
+	<gsCode: nil>
+	
 	^ MASelectorAccessor selector: self
 ]
 
